@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        File htmlTemplateFile = new File("src/ru/edu/hse/template.html");
+        File htmlTemplateFile = new File("template.html");
         String htmlString = null;
         try {
             htmlString = FileUtils.readFileToString(htmlTemplateFile);
@@ -28,7 +28,7 @@ public class Main {
         htmlString = htmlString.replace("$title", title);
         htmlString = htmlString.replace("$leftside", body);
         htmlString = htmlString.replace("$rightside", right);
-        File newHtmlFile = new File("src/ru/edu/hse/result.html");
+        File newHtmlFile = new File("result.html");
         try {
             FileUtils.writeStringToFile(newHtmlFile, htmlString);
         } catch (IOException e) {
