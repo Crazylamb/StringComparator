@@ -47,12 +47,12 @@ public class TextAnalyzer {
         int j = 0;
         for (int i = 0; i < secondFile.size(); i++) {
             for (j = currentIndex; j < firstFile.size(); j++) {
-                if (lcsOperator.getLCS(firstFile.get(i), secondFile.get(i)).length() == secondFile.get(i).length() ){
+                if (lcsOperator.getLCS(firstFile.get(j), secondFile.get(i)).length() == secondFile.get(i).length() ){
                     sb.append("<p>" + secondFile.get(i) + "</p>");
                     currentIndex = j;
                     break;
                 }
-                else if (lcsOperator.getLCS(firstFile.get(i), secondFile.get(i)).length() > (secondFile.get(i).length() / 2)){
+                else if (lcsOperator.getLCS(firstFile.get(j), secondFile.get(i)).length() > (secondFile.get(i).length() / 2)){
                     sb.append("<p blockquote style=\"color: blue\">" + secondFile.get(i) + "</p>");
                     currentIndex = j;
                     break;
