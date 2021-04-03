@@ -16,18 +16,19 @@ public class TextAnalyzer {
         int j = 0;
         for (int i = 0; i < firstFile.size(); i++) {
             for (j = currentIndex; j < secondFile.size(); j++) {
-                if (lcsOperator.getLCS(firstFile.get(i), secondFile.get(j)).length() == firstFile.get(i).length() ){
+                int comparedLength = lcsOperator.getLCS(firstFile.get(i), secondFile.get(j)).length();
+                if (comparedLength == firstFile.get(i).length() && comparedLength == secondFile.get(j).length() ){
                     sb.append("<p>" + firstFile.get(i) + "</p>");
-                    currentIndex = j;
+                    currentIndex = j + 1;
                     break;
                 }
-                else if (lcsOperator.getLCS(firstFile.get(i), secondFile.get(j)).length() > (firstFile.get(i).length() / 2)){
+                else if (comparedLength > (firstFile.get(i).length() / 2)){
                     sb.append("<p blockquote style=\"color: blue\">" + firstFile.get(i) + "</p>");
-                    currentIndex = j;
+                    currentIndex = j + 1;
                     break;
                 }
             }
-            if (j == secondFile.size() && currentIndex != j){
+            if (j == secondFile.size()){
                 sb.append("<p blockquote style=\"color: red\">" + firstFile.get(i) + "</p>");
             }
         }
@@ -47,18 +48,19 @@ public class TextAnalyzer {
         int j = 0;
         for (int i = 0; i < secondFile.size(); i++) {
             for (j = currentIndex; j < firstFile.size(); j++) {
-                if (lcsOperator.getLCS(firstFile.get(j), secondFile.get(i)).length() == secondFile.get(i).length() ){
+                int comparedLength = lcsOperator.getLCS(firstFile.get(j), secondFile.get(i)).length();
+                if (comparedLength == secondFile.get(i).length() && comparedLength == firstFile.get(j).length() ){
                     sb.append("<p>" + secondFile.get(i) + "</p>");
-                    currentIndex = j;
+                    currentIndex = j + 1;
                     break;
                 }
-                else if (lcsOperator.getLCS(firstFile.get(j), secondFile.get(i)).length() > (secondFile.get(i).length() / 2)){
+                else if (comparedLength > (secondFile.get(i).length() / 2)){
                     sb.append("<p blockquote style=\"color: blue\">" + secondFile.get(i) + "</p>");
-                    currentIndex = j;
+                    currentIndex = j + 1;
                     break;
                 }
             }
-            if (j == firstFile.size() && currentIndex != j){
+            if (j == firstFile.size()){
                 sb.append("<p blockquote style=\"color: green\">" + secondFile.get(i) + "</p>");
             }
         }
